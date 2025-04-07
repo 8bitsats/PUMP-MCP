@@ -1,4 +1,5 @@
-# PUMP-MPC: Solana Token Creator & Manager
+# PUMP-MPC: Solana Token Creator & 
+[![smithery badge](https://smithery.ai/badge/@8bitsats/pump-mpc)](https://smithery.ai/server/@8bitsats/pump-mpc)
 
 A Model Context Protocol (MCP) server for creating and managing Solana tokens on Pump.fun, integrated with Claude Desktop.
 
