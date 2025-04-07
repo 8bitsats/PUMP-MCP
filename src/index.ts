@@ -21,7 +21,7 @@ import { createToken, formatCreateTokenResult } from "./create-token.js";
 dotenv.config({ path: path.join(rootDir, ".env") });
 
 const server = new McpServer({
-  name: "pumpfun",
+  name: "pump-mpc",
   version: "1.0.0",
 });
 
@@ -315,7 +315,7 @@ server.tool(
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Pump Fun MCP Server running on stdio");
+  console.error("Pump MPC Server running on stdio");
 }
 
 main().catch((error) => {

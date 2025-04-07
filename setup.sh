@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Setup script for pumpfun-mcp-server
-echo "🚀 Setting up pumpfun-mcp-server..."
+# Setup script for pump-mpc-template
+echo "🚀 Setting up pump-mpc-template..."
 
 # Check if Node.js is installed
 if ! command -v node &> /dev/null; then
@@ -57,7 +57,7 @@ if [ "$SETUP_WALLET" = "y" ] || [ "$SETUP_WALLET" = "Y" ]; then
             solana-keygen new --no-passphrase -o .keys/temp_keypair.json
             PRIVATE_KEY=$(solana-keygen pubkey -k .keys/temp_keypair.json)
             echo "Your new wallet address: $PRIVATE_KEY"
-            echo "⚠️ IMPORTANT: Fund this wallet with SOL before using it with pumpfun-mcp"
+            echo "⚠️ IMPORTANT: Fund this wallet with SOL before using it with pump-mpc"
         else
             echo "Please install Solana CLI tools and run this script again to generate a wallet."
         fi
@@ -102,15 +102,15 @@ if [ "$SETUP_CLAUDE" = "y" ] || [ "$SETUP_CLAUDE" = "Y" ]; then
         if jq -e . >/dev/null 2>&1 <<< "$EXISTING_CONFIG"; then
             # Update existing config
             jq --arg path "$INDEX_PATH" --arg rpc "$HELIUS_RPC_URL" \
-            '.mcpServers.pumpfun = {"command": "node", "args": [$path], "env": {"HELIUS_RPC_URL": $rpc}}' \
+            '.mcpServers."pump-mpc" = {"command": "node", "args": [$path], "env": {"HELIUS_RPC_URL": $rpc}}' \
             "$CLAUDE_CONFIG_FILE" > "${CLAUDE_CONFIG_FILE}.tmp" && mv "${CLAUDE_CONFIG_FILE}.tmp" "$CLAUDE_CONFIG_FILE"
         else
             # Invalid JSON, create new config
-            echo "{\n  \"mcpServers\": {\n    \"pumpfun\": {\n      \"command\": \"node\",\n      \"args\": [\"$INDEX_PATH\"],\n      \"env\": {\n        \"HELIUS_RPC_URL\": \"$HELIUS_RPC_URL\"\n      }\n    }\n  }\n}" > "$CLAUDE_CONFIG_FILE"
+            echo "{\n  \"mcpServers\": {\n    \"pump-mpc\": {\n      \"command\": \"node\",\n      \"args\": [\"$INDEX_PATH\"],\n      \"env\": {\n        \"HELIUS_RPC_URL\": \"$HELIUS_RPC_URL\"\n      }\n    }\n  }\n}" > "$CLAUDE_CONFIG_FILE"
         fi
     else
         # Create new config file
-        echo "{\n  \"mcpServers\": {\n    \"pumpfun\": {\n      \"command\": \"node\",\n      \"args\": [\"$INDEX_PATH\"],\n      \"env\": {\n        \"HELIUS_RPC_URL\": \"$HELIUS_RPC_URL\"\n      }\n    }\n  }\n}" > "$CLAUDE_CONFIG_FILE"
+        echo "{\n  \"mcpServers\": {\n    \"pump-mpc\": {\n      \"command\": \"node\",\n      \"args\": [\"$INDEX_PATH\"],\n      \"env\": {\n        \"HELIUS_RPC_URL\": \"$HELIUS_RPC_URL\"\n      }\n    }\n  }\n}" > "$CLAUDE_CONFIG_FILE"
     fi
     
     echo "✅ Claude Desktop configuration updated!"
@@ -128,4 +128,4 @@ echo "   Run: npx ngrok http <PORT> (replace <PORT> with the port your server ru
 echo "2. Cloudflare Tunnel - Secure tunneling: https://www.cloudflare.com/products/tunnel/"
 echo "3. Deploy to a cloud provider like AWS, Google Cloud, or DigitalOcean"
 echo ""
-echo "For more information, check the README.md file."
+echo "For more information, check the README.md and GUIDE.md files."

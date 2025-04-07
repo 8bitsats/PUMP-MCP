@@ -1,29 +1,35 @@
 {
-  "name": "pumpfun-mcp",
+  "name": "pump-mpc-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "A template for creating and managing Solana tokens on Pump.fun using Claude Desktop and MCP",
   "main": "index.js",
   "scripts": {
     "build": "tsc && chmod 755 build/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/noahgsolomon/pumpfun-mcp-server.git"
+    "url": "git+https://github.com/yourusername/pump-mpc-template.git"
   },
   "bin": {
-    "pumpfun": "./build/index.js"
+    "pump-mpc": "./build/index.js"
   },
   "files": [
     "build"
   ],
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "solana",
+    "pump.fun",
+    "mcp",
+    "claude",
+    "token"
+  ],
+  "author": "Your Name",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/noahgsolomon/pumpfun-mcp-server/issues"
+    "url": "https://github.com/yourusername/pump-mpc-template/issues"
   },
-  "homepage": "https://github.com/noahgsolomon/pumpfun-mcp-server#readme",
+  "homepage": "https://github.com/yourusername/pump-mpc-template#readme",
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0",
     "@modelcontextprotocol/sdk": "^1.7.0",
