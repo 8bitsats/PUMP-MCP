@@ -1,5 +1,5 @@
 # PUMP-MPC: Solana Token Creator & 
-[![smithery badge](https://smithery.ai/badge/@8bitsats/pump-mpc)](https://smithery.ai/server/@8bitsats/pump-mpc)
+[![smithery badge](https://smithery.ai/badge/@8bitsats/pump-mcp)](https://smithery.ai/server/@8bitsats/pump-mcp)
 
 A Model Context Protocol (MCP) server for creating and managing Solana tokens on Pump.fun, integrated with Claude Desktop.
 
@@ -26,6 +26,14 @@ This template provides a complete solution for creating and managing Solana toke
 - SOL for transaction fees and initial token buys
 
 ## Installation
+
+### Installing via Smithery
+
+To install Solana Token Creator for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@8bitsats/pump-mcp):
+
+```bash
+npx -y @smithery/cli install @8bitsats/pump-mcp --client claude
+```
 
 1. Clone this repository:
    ```
