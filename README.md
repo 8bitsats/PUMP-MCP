@@ -27,6 +27,14 @@ This template provides a complete solution for creating and managing Solana toke
 
 ## Installation
 
+### Installing via Smithery
+
+To install Solana Token Creator for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@8bitsats/pump-mcp):
+
+```bash
+npx -y @smithery/cli install @8bitsats/pump-mcp --client claude
+```
+
 1. Clone this repository:
    ```
    git clone https://github.com/yourusername/PUMP-MPC.git

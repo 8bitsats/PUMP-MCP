@@ -1,0 +1,39 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - heliusRpcUrl
+    properties:
+      heliusRpcUrl:
+        type: string
+        description: Helius RPC URL for connecting to the Solana network
+      keysFolder:
+        type: string
+        default: ""
+        description: Folder for storing keypairs
+      privateKey:
+        type: string
+        default: ""
+        description: Private key for the account
+      xaiApiKey:
+        type: string
+        default: ""
+        description: X.AI API key for additional features
+      solanaTrackerApiKey:
+        type: string
+        default: ""
+        description: Solana Tracker API key for market data
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({ command: 'node', args: ['build/index.js'], env: { HELIUS_RPC_URL: config.heliusRpcUrl, KEYS_FOLDER: config.keysFolder || '', PRIVATE_KEY: config.privateKey || '', XAI_API_KEY: config.xaiApiKey || '', SOLANA_TRACKER_API_KEY: config.solanaTrackerApiKey || '' } })
+  exampleConfig:
+    heliusRpcUrl: https://dev.helius.xyz/your-api-key
+    keysFolder: /path/to/keys
+    privateKey: your-private-key
+    xaiApiKey: your-xai-api-key
+    solanaTrackerApiKey: your-solanatracker-api-key
