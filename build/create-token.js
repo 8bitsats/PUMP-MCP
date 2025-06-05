@@ -27,8 +27,25 @@ export async function createToken(name, symbol, description, imageUrl, initialBu
         const mint = Keypair.generate();
         let fileBlob;
         if (imageUrl) {
-            const imageData = fs.readFileSync(imageUrl);
-            fileBlob = new Blob([imageData], { type: "image/png" });
+            try {
+                let imageData;
+                if (imageUrl.startsWith("http://") || imageUrl.startsWith("https://")) {
+                    const res = await fetch(imageUrl);
+                    if (!res.ok) {
+                        throw new Error(`Failed to fetch image: ${res.status} ${res.statusText}`);
+                    }
+                    const arrayBuffer = await res.arrayBuffer();
+                    imageData = Buffer.from(arrayBuffer);
+                }
+                else {
+                    imageData = fs.readFileSync(imageUrl);
+                }
+                fileBlob = new Blob([imageData], { type: "image/png" });
+            }
+            catch (error) {
+                console.error(`Error loading image from ${imageUrl}:`, error);
+                return { success: false, error: `Failed to load image from ${imageUrl}` };
+            }
         }
         const tokenMetadata = {
             name,
