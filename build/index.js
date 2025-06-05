@@ -15,7 +15,7 @@ import { getAccountBalance } from "./get-token-balance.js";
 import { createToken, formatCreateTokenResult } from "./create-token.js";
 dotenv.config({ path: path.join(rootDir, ".env") });
 const server = new McpServer({
-    name: "pumpfun",
+    name: "pump-mpc",
     version: "1.0.0",
 });
 function getProvider() {
@@ -219,7 +219,7 @@ server.tool("get-account-balance", "Get the SOL and token balances for an accoun
 async function main() {
     const transport = new StdioServerTransport();
     await server.connect(transport);
-    console.error("Pump Fun MCP Server running on stdio");
+    console.error("Pump MPC Server running on stdio");
 }
 main().catch((error) => {
     console.error("Fatal error in main():", error);
